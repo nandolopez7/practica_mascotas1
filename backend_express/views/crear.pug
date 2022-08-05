@@ -1,0 +1,61 @@
+head
+  meta(charset='utf-8')
+  title Title2
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+  body
+    p test
+    .modal-dialog
+        .modal-content
+          // Modal Header
+          .modal-header
+            button.close(type="button", data-dismiss="modal")
+              span(aria-hidden="true") ×
+              span.sr-only Close
+            h4#myModalLabel.modal-title
+              | Crear Mascotas
+          // Modal Body
+          .modal-body
+            form(role='form' method='POST' action='http://localhost:3000/usuario/pet')
+              div.form-group
+                label(for='nombre_usuario') Pet name:
+                input#name.form-control(type='text', placeholder='xxx' name='nombre_mascota')
+              div.form-group
+                label(for='age') Age:
+                input#name.form-control(type='text', placeholder='xxxx' name='edad')
+              div.form-group
+                label(for='type') Type: 
+                select(name='tipo' id='tipo' class='form-control')
+                  optgroup(label="Perros")
+                    option(value=1) Labrador 
+                    option(value=2) Cocker  
+                  optgroup(label="Gatos")
+                    option(value=3) Siames        
+              button.btn.btn-primary(type="submit", name="createPet") Create
+        p      
+        .modal-content
+          // Modal Header 
+          .modal-header
+            button.close(type="button", data-dismiss="modal")
+              span(aria-hidden="true") ×
+              span.sr-only Close
+            h4#myModalLabel.modal-title
+              | Crear Juguetes
+          // Modal Body
+          .modal-body
+            form(role='form' method='POST' action='http://localhost:3000/usuario/toy')
+              div.form-group
+                label(for='nombre_juguete') Toy name:
+                input#name.form-control(type='text', placeholder='xxx' name='nombre_juguete')
+              div.form-group
+                label(for='color') Color:
+                input#name.form-control(type='text', placeholder='xxxx' name='color')
+              div.form-group
+                label(for='pet') Owner: 
+                select(name='pet' id='pet' class='form-control')
+                  each val in data
+                    option(value=val.pet_id) #{val.pet_name}           
+              button.btn.btn-primary(type="submit", name="createToy") Create
+          // Modal Footer
+          .modal-footer
+            h4 footer
